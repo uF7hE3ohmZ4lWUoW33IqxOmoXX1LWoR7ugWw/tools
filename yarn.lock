@@ -541,6 +541,22 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@smui-extra/accordion@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui-extra/accordion/-/accordion-6.0.0.tgz#2103b87017ede0410b9ee31c3b23361cd2cfb86d"
+  integrity sha512-TxZrVgMctrU4s5ay46GiAywE5gFt/vKsn6cEvINWPRy6I/WKxYLV8bubw8BF+yWbBkI9EGzySAICmcEOwjO5Sg==
+  dependencies:
+    "@material/animation" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/ripple" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    "@smui/common" "^6.0.0"
+    "@smui/paper" "^6.0.0"
+    "@smui/ripple" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
 "@smui/button@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@smui/button/-/button-6.0.0.tgz#9f1ddfc4b63157565caba0df104e49524b0bbf76"
@@ -710,6 +726,19 @@
     "@material/notched-outline" "^13.0.0"
     "@smui/common" "^6.0.0"
     "@smui/floating-label" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/paper@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/paper/-/paper-6.0.0.tgz#41f9080bc5810aebd2f6a64240a48541b6e02277"
+  integrity sha512-zfctECCdRMIcK7lSx0IX8HmK8dj0XJci8R+S71kViPCr/08A5yTRyjWsVUEZY4ouKp9+RVBgeEJE+r6iGR0iqQ==
+  dependencies:
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    "@smui/common" "^6.0.0"
     svelte2tsx "^0.5.12"
 
 "@smui/ripple@^6.0.0":

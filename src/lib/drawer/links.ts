@@ -14,4 +14,17 @@ export default [
     label: 'Todos',
     icon: 'home'
   },
+  {
+    href: '/tools',
+    label: 'Tools',
+    icon: 'home',
+    open: false,
+    children: [
+      {
+        href: '/tools/gear-calculator',
+        label: 'Gear Calculator',
+        icon: 'home',
+      }
+    ]
+  },
 ]
