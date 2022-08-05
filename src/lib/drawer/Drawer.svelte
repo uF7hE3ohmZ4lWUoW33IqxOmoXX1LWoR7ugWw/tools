@@ -1,15 +1,12 @@
 <script lang="ts">
+	import links from './links';
 	import Drawer, { Content, Header, Title, Subtitle, AppContent } from '@smui/drawer';
-	import Button, { Label, Icon } from '@smui/button';
-	import { Svg } from '@smui/common/elements';
-	import { mdiMenu } from '@mdi/js';
-	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
-	import { H6 } from '@smui/common/elements';
+	import List, { Item, Text, Graphic } from '@smui/list';
 
 	/**
 	 * Determines if the drawer is currently open
 	 */
-	let open = false;
+	export let open: boolean;
 
 	/**
 	 * The currently active tab
@@ -27,29 +24,27 @@
 	}
 </script>
 
-<div>
-	<Drawer variant="dismissible" bind:open>
-		<Header>
-			<Title>ImBrett</Title>
-			<Subtitle>Just another Dev site.</Subtitle>
-		</Header>
-		<Content>
-			<List>
-				<Item href={'#'} on:click={() => setActive('Home')} activated={active === 'Home'}>
-					<Graphic class="material-icons" aria-hidden="true">home</Graphic>
-					<Text>Home</Text>
+<Drawer variant="dismissible" {open}>
+	<Header>
+		<Title>ImBrett</Title>
+		<Subtitle>Just another Dev site.</Subtitle>
+	</Header>
+	<Content>
+		<List>
+			{#each links as link (link.href)}
+				<Item
+					href={link.href}
+					on:click={() => setActive(link.label)}
+					activated={active === link.label}
+				>
+					<Graphic class="material-icons" aria-hidden="true">{link.icon}</Graphic>
+					<Text>{link.label}</Text>
 				</Item>
-			</List>
-		</Content>
-	</Drawer>
+			{/each}
+		</List>
+	</Content>
+</Drawer>
 
-	<AppContent>
-		<main>
-			<Button on:click={() => (open = !open)}>
-				<Icon component={Svg} viewBox="0 0 24 24">
-					<path fill="currentColor" d={mdiMenu} />
-				</Icon>
-			</Button>
-		</main>
-	</AppContent>
-</div>
+<AppContent>
+	<slot />
+</AppContent>

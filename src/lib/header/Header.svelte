@@ -1,124 +1,72 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	import { createEventDispatcher } from 'svelte';
+	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
+	import List, { Item, Text } from '@smui/list';
+	import MenuSurface from '@smui/menu-surface';
+	import IconButton from '@smui/icon-button';
+
+	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
+	import type { MenuSurfaceComponentDev } from '@smui/menu-surface';
+
+	export let open: boolean;
+	let topAppBar: TopAppBarComponentDev;
+
+	/**
+	 * The settings menu instance
+	 */
+	let settingsMenu: MenuSurfaceComponentDev;
+
+	const dispatch = createEventDispatcher();
+	const onMenuButtonClick = () => {
+		dispatch('menuButtonClick', { open: !open });
+	};
+
+	/**
+	 * Determines if the user is using a light theme on their browser
+	 */
+	let lightTheme =
+		typeof window === 'undefined' || !window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+	/**
+	 * Toggles the theme from light to dark
+	 */
+	function switchTheme() {
+		lightTheme = !lightTheme;
+		let themeLink = document.head.querySelector<HTMLLinkElement>('#theme');
+		if (!themeLink) {
+			themeLink = document.createElement('link');
+			themeLink.rel = 'stylesheet';
+			themeLink.id = 'theme';
+		}
+		themeLink.href = `/smui${lightTheme ? '' : '-dark'}.css`;
+		document.head
+			.querySelector<HTMLLinkElement>('link[href$="/smui-dark.css"]')
+			?.insertAdjacentElement('afterend', themeLink);
+	}
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<TopAppBar bind:this={topAppBar} variant="standard">
+	<Row>
+		<Section>
+			<IconButton on:click={onMenuButtonClick} class="material-icons">menu</IconButton>
+			<Title>ImBrett</Title>
+		</Section>
+		<Section align="end" toolbar>
+			<slot name="header-icons" />
+			<IconButton on:click={() => settingsMenu.setOpen(true)} class="material-icons">
+				settings
+				<MenuSurface bind:this={settingsMenu} anchorCorner="BOTTOM_START">
+					<List>
+						<Item on:click={switchTheme}>
+							<Text>Switch to {lightTheme ? 'dark' : 'light'} mode</Text>
+						</Item>
+					</List>
+				</MenuSurface>
+			</IconButton>
+		</Section>
+	</Row>
+</TopAppBar>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.url.pathname === '/about'}>
-				<a sveltekit:prefetch href="/about">About</a>
-			</li>
-			<li class:active={$page.url.pathname === '/todos'}>
-				<a sveltekit:prefetch href="/todos">Todos</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
-	</div>
-</header>
-
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--accent-color);
-	}
-</style>
+<AutoAdjust {topAppBar}>
+	<slot name="content" />
+</AutoAdjust>
