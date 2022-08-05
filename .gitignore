@@ -3,6 +3,8 @@ node_modules
 /build
 /.svelte-kit
 /package
+/static/smui.css
+/static/smui-dark.css
 .env
 .env.*
 !.env.example
