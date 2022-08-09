@@ -22,7 +22,12 @@ export default [
     children: [
       {
         href: '/tools/gear-calculator',
-        label: 'Gear Calculator',
+        label: 'Gear Enhancement Calculator',
+        icon: 'home',
+      },
+      {
+        href: '/tools/gear-efficiency-calculator',
+        label: 'Gear Efficiency Calculator',
         icon: 'home',
       }
     ]
