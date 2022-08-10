@@ -86,6 +86,24 @@
   dependencies:
     tslib "^2.1.0"
 
+"@material/banner@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@material/banner/-/banner-13.0.0.tgz#853e01977433ca7f0d991d198bc91e1b54adedac"
+  integrity sha512-59M85ezhwRaa+BqguYCCaRS57fV5KQe3Ff2cU6LcQNw0UPMFW1ap0dZ+iZBv/sj+7/QcqBBShL9uu8dWKtI4Gg==
+  dependencies:
+    "@material/base" "^13.0.0"
+    "@material/button" "^13.0.0"
+    "@material/dom" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/ripple" "^13.0.0"
+    "@material/rtl" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/tokens" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    tslib "^2.1.0"
+
 "@material/base@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@material/base/-/base-13.0.0.tgz#18f7f5ac112bf67e66c1ade6ab543ea9df9d3836"
@@ -541,6 +559,31 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@smui-extra/accordion@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui-extra/accordion/-/accordion-6.0.0.tgz#2103b87017ede0410b9ee31c3b23361cd2cfb86d"
+  integrity sha512-TxZrVgMctrU4s5ay46GiAywE5gFt/vKsn6cEvINWPRy6I/WKxYLV8bubw8BF+yWbBkI9EGzySAICmcEOwjO5Sg==
+  dependencies:
+    "@material/animation" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/ripple" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    "@smui/common" "^6.0.0"
+    "@smui/paper" "^6.0.0"
+    "@smui/ripple" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/banner@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/banner/-/banner-6.0.0.tgz#ad1c762d2cf4e9d253a06daaac9096349615bb46"
+  integrity sha512-/EepMWJIt7aBe3tVJI3STIm8y7edFj5I/gE+s4zcq+FBtw3YwJYeNZEV1r+MzcoaFD1FTKFDRtveZXvKjlWn9A==
+  dependencies:
+    "@material/banner" "^13.0.0"
+    "@smui/common" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
 "@smui/button@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@smui/button/-/button-6.0.0.tgz#9f1ddfc4b63157565caba0df104e49524b0bbf76"
@@ -710,6 +753,19 @@
     "@material/notched-outline" "^13.0.0"
     "@smui/common" "^6.0.0"
     "@smui/floating-label" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/paper@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/paper/-/paper-6.0.0.tgz#41f9080bc5810aebd2f6a64240a48541b6e02277"
+  integrity sha512-zfctECCdRMIcK7lSx0IX8HmK8dj0XJci8R+S71kViPCr/08A5yTRyjWsVUEZY4ouKp9+RVBgeEJE+r6iGR0iqQ==
+  dependencies:
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    "@smui/common" "^6.0.0"
     svelte2tsx "^0.5.12"
 
 "@smui/ripple@^6.0.0":
@@ -2435,6 +2491,11 @@ util-deprecate@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+uuid@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 v8-compile-cache@^2.0.3:
   version "2.3.0"

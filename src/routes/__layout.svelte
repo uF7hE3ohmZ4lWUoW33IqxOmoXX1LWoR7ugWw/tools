@@ -8,7 +8,7 @@
 	let open = false;
 </script>
 
-<AppDrawer {open}>
+<AppDrawer {open} on:childButtonClick={(e) => (open = e.detail.open)}>
 	<AppHeader {open} on:menuButtonClick={(e) => (open = e.detail.open)}>
 		<span slot="content">
 			<slot />
