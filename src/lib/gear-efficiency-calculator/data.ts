@@ -58,6 +58,15 @@ export type GearEfficiencyInput = {
   rolls: number
 }
 
+export type Calculations = {
+  name: string,
+  total_max: number,
+  total_min: number,
+  efficiency: number,
+  value: number,
+  rolls: number
+}
+
 export const calculations = (test_inputs: GearEfficiencyInput[]) => {
   let response = [];
   test_inputs.forEach((input) => {

@@ -5,23 +5,13 @@ export default [
     icon: 'home'
   },
   {
-    href: '/about',
-    label: 'About',
-    icon: 'home'
-  },
-  {
-    href: '/todos',
-    label: 'Todos',
-    icon: 'home'
-  },
-  {
     href: '/tools',
     label: 'Tools',
     icon: 'home',
     open: false,
     children: [
       {
-        href: '/tools/gear-calculator',
+        href: '/tools/gear-enhancement-calculator',
         label: 'Gear Enhancement Calculator',
         icon: 'home',
       },
