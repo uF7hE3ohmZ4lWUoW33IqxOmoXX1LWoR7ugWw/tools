@@ -49,7 +49,7 @@
 	<Row>
 		<Section>
 			<IconButton on:click={onMenuButtonClick} class="material-icons">menu</IconButton>
-			<Title>ImBrett</Title>
+			<Title>ACE Helper</Title>
 		</Section>
 		<Section align="end" toolbar>
 			<slot name="header-icons" />
