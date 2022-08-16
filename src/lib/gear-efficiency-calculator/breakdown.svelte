@@ -3,9 +3,9 @@
 	import Card, { Content } from '@smui/card';
 	import List, { Item, Text } from '@smui/list';
 
-	import type { Calculations } from './data';
+	import type { GearCalculations } from './__types';
 
-	export let calcs: Calculations[];
+	export let calcs: GearCalculations[];
 </script>
 
 {#each calcs as calc (calc.name)}

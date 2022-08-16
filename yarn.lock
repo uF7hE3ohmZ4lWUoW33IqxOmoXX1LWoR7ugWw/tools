@@ -227,6 +227,24 @@
     "@material/theme" "^13.0.0"
     tslib "^2.1.0"
 
+"@material/fab@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@material/fab/-/fab-13.0.0.tgz#fa8cf548b7c90a592760569385aff3a816c59d2d"
+  integrity sha512-qOi+XWEZWUR5T961UjSorgqm5VaanuZtRN3nsrKqHH1p0L8fYRc3qkGIChlaY9p7BcOYMCynXJzT+MfELVrcwA==
+  dependencies:
+    "@material/animation" "^13.0.0"
+    "@material/dom" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/ripple" "^13.0.0"
+    "@material/rtl" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/tokens" "^13.0.0"
+    "@material/touch-target" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    tslib "^2.1.0"
+
 "@material/feature-targeting@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@material/feature-targeting/-/feature-targeting-13.0.0.tgz#7bc7840b40930b6831101a22882acdd0329591c0"
@@ -651,6 +669,17 @@
     "@material/dom" "^13.0.0"
     "@material/drawer" "^13.0.0"
     "@smui/common" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/fab@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/fab/-/fab-6.0.0.tgz#44c974531378b50823c650eea880713ea043a607"
+  integrity sha512-JXj1LKuDx4jqWaceG2snlRbDn8ComHD+eKPKBUDVnwu8a0kKl4AbF4Rrl7w4EJuBTFNcMDuEEMZEqxT60bM46A==
+  dependencies:
+    "@material/fab" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@smui/common" "^6.0.0"
+    "@smui/ripple" "^6.0.0"
     svelte2tsx "^0.5.12"
 
 "@smui/floating-label@^6.0.0":
