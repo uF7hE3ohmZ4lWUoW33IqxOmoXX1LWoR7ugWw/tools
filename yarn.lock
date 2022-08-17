@@ -227,6 +227,24 @@
     "@material/theme" "^13.0.0"
     tslib "^2.1.0"
 
+"@material/fab@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@material/fab/-/fab-13.0.0.tgz#fa8cf548b7c90a592760569385aff3a816c59d2d"
+  integrity sha512-qOi+XWEZWUR5T961UjSorgqm5VaanuZtRN3nsrKqHH1p0L8fYRc3qkGIChlaY9p7BcOYMCynXJzT+MfELVrcwA==
+  dependencies:
+    "@material/animation" "^13.0.0"
+    "@material/dom" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/ripple" "^13.0.0"
+    "@material/rtl" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/tokens" "^13.0.0"
+    "@material/touch-target" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    tslib "^2.1.0"
+
 "@material/feature-targeting@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@material/feature-targeting/-/feature-targeting-13.0.0.tgz#7bc7840b40930b6831101a22882acdd0329591c0"
@@ -491,6 +509,22 @@
   dependencies:
     "@material/elevation" "^13.0.0"
 
+"@material/tooltip@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@material/tooltip/-/tooltip-13.0.0.tgz#2a4360b1d9b07b7573d69e2a85d5522dec00b97d"
+  integrity sha512-/QinwEM0sYtRUthgOy7R+V4iwLMZ8SCd8A3PyGyTr27BUGWykwAUFdXyzT4rxLhDNcnDOYH14N+Z3Bom+UwO9Q==
+  dependencies:
+    "@material/animation" "^13.0.0"
+    "@material/base" "^13.0.0"
+    "@material/dom" "^13.0.0"
+    "@material/elevation" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@material/rtl" "^13.0.0"
+    "@material/shape" "^13.0.0"
+    "@material/theme" "^13.0.0"
+    "@material/typography" "^13.0.0"
+    tslib "^2.1.0"
+
 "@material/top-app-bar@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@material/top-app-bar/-/top-app-bar-13.0.0.tgz#c4f8af665ed25b5db35083bf5253bb6bd161cae5"
@@ -651,6 +685,17 @@
     "@material/dom" "^13.0.0"
     "@material/drawer" "^13.0.0"
     "@smui/common" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/fab@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/fab/-/fab-6.0.0.tgz#44c974531378b50823c650eea880713ea043a607"
+  integrity sha512-JXj1LKuDx4jqWaceG2snlRbDn8ComHD+eKPKBUDVnwu8a0kKl4AbF4Rrl7w4EJuBTFNcMDuEEMZEqxT60bM46A==
+  dependencies:
+    "@material/fab" "^13.0.0"
+    "@material/feature-targeting" "^13.0.0"
+    "@smui/common" "^6.0.0"
+    "@smui/ripple" "^6.0.0"
     svelte2tsx "^0.5.12"
 
 "@smui/floating-label@^6.0.0":
@@ -825,6 +870,15 @@
     "@smui/line-ripple" "^6.0.0"
     "@smui/notched-outline" "^6.0.0"
     "@smui/ripple" "^6.0.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/tooltip@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@smui/tooltip/-/tooltip-6.0.0.tgz#64755362e81550bd7dc78285512922d80ed30667"
+  integrity sha512-moBRfjaV2bo2BKcW/B5QdfBlxfiOMKKw7Dfw7/c+peVSVfZdV054QgiUTKjCnXMI6tmqtk7UeY4YErzW769e+Q==
+  dependencies:
+    "@material/tooltip" "^13.0.0"
+    "@smui/common" "^6.0.0"
     svelte2tsx "^0.5.12"
 
 "@smui/top-app-bar@^6.0.0":
