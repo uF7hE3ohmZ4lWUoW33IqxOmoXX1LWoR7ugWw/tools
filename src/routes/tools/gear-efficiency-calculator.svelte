@@ -41,7 +41,7 @@
 			<Table bind:set_calcs />
 		</InnerGrid>
 	</Cell>
-	<Fab on:click={add_gear} style="position: fixed; right: 20; bottom: 20;">
+	<Fab color="primary" on:click={add_gear} style="position: fixed; right: 20; bottom: 20;">
 		<Icon component={Svg} viewBox="2 2 20 20">
 			<path fill="currentColor" d={mdiPlus} />
 		</Icon>
