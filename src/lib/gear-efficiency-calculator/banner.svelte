@@ -15,13 +15,8 @@
 
 <Banner open mobileStacked content$style="max-width: max-content;">
 	<Label slot="label">
-		Current Gear || Total Efficiency: {total_efficiency} 
-		{#each calcs as calc (calc.name)}
-			|| {calc.name.replace('_', ' ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g, (s) => {
-				return s.toUpperCase();
-			})}:{calc.efficiency}% 
-		{/each}
+		Current Gear || Total Efficiency: {total_efficiency}%
 		<br />
-		Set Gear || Total Efficiency: {set_total_efficiency}
+		Set Gear || Total Efficiency: {set_total_efficiency}%
 	</Label>
 </Banner>
