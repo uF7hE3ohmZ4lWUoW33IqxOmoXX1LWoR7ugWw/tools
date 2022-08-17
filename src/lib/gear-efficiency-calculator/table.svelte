@@ -5,24 +5,24 @@
 	import type { GearCalculations } from './__types';
 
 	export let set_calcs: GearCalculations[][];
-	export let calcs: GearCalculations[];
 </script>
 
 {#each set_calcs as calc, i (i)}
+	{#if calc.map(c=>c).length > 0}
 	<GridCell spanDevices={{ desktop: 4, tablet: 4, phone: 4 }}>
-		<DataTable table$aria-label="People list" style="max-width: 100%;">
+		<DataTable table$aria-label="Gear Calculations" style="max-width: 100%;">
 			<Head>
 				<Row>
 					<Cell>Stat</Cell>
-					<Cell numeric>Value</Cell>
-					<Cell numeric>Rolls</Cell>
-					<Cell numeric>Minumum</Cell>
-					<Cell numeric>Maximum</Cell>
-					<Cell numeric>Efficiency</Cell>
+					<Cell>Value</Cell>
+					<Cell>Rolls</Cell>
+					<Cell>Minumum</Cell>
+					<Cell>Maximum</Cell>
+					<Cell>Efficiency</Cell>
 				</Row>
 			</Head>
 			<Body>
-				{#each calcs as stat (stat.name)}
+				{#each calc as stat (stat.name)}
 					<Row>
 						<Cell
 							>{stat.name
@@ -31,14 +31,15 @@
 									return s.toUpperCase();
 								})}</Cell
 						>
-						<Cell numeric>{stat.value}</Cell>
-						<Cell numeric>{stat.rolls}</Cell>
-						<Cell numeric>{stat.total_min}</Cell>
-						<Cell numeric>{stat.total_max}</Cell>
-						<Cell numeric>{stat.efficiency}</Cell>
+						<Cell>{stat.value}</Cell>
+						<Cell>{stat.rolls}</Cell>
+						<Cell>{stat.total_min}</Cell>
+						<Cell>{stat.total_max}</Cell>
+						<Cell>{stat.efficiency}%</Cell>
 					</Row>
 				{/each}
 			</Body>
 		</DataTable>
 	</GridCell>
+	{/if}
 {/each}

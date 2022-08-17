@@ -5,11 +5,13 @@
 	import Textfield from '@smui/textfield';
 	import { stat_names } from './data';
 	import type { SubStatInput } from './__types';
+	import { gear_calculations } from '$lib/gear-efficiency-calculator/calculations'
+	import Breakdown from './breakdown.svelte'
 
 	export let stats: SubStatInput[];
 </script>
 
-{#each stats as stat, i (i)}
+{#each stats as stat, i (stat.id)}
 	<Cell spanDevices={{ desktop: 3, tablet: 2, phone: 2 }}>
 		<Card padded>
 			<Select bind:value={stats[i].name} label="Stat {i + 1}">

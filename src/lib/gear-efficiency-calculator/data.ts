@@ -33,7 +33,7 @@ export const stat_names = [
   'defense'
 ];
 
-export const initial_stats: SubStatInput[] = new Array<SubStatInput>(4)
+export const generate_initial_stats: SubStatInput[] = () => new Array<SubStatInput>(4)
   .fill({
     name: '',
     value: 0,

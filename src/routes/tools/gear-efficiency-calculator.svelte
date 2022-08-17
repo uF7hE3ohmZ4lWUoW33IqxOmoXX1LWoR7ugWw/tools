@@ -1,28 +1,25 @@
 <script lang="ts">
 	import LayoutGrid, { Cell, InnerGrid } from '@smui/layout-grid';
 	import Form from '$lib/gear-efficiency-calculator/form.svelte';
-	import Breakdown from '$lib/gear-efficiency-calculator/breakdown.svelte';
 	import Banner from '$lib/gear-efficiency-calculator/banner.svelte';
 	import Table from '$lib/gear-efficiency-calculator/table.svelte';
 	import Fab, { Icon } from '@smui/fab';
 	import { Svg } from '@smui/common/elements';
 	import { mdiPlus } from '@mdi/js';
-	import { initial_stats } from '$lib/gear-efficiency-calculator/data';
+	import { generate_initial_stats, test_sets } from '$lib/gear-efficiency-calculator/data';
 	import {
 		gear_calculations,
 		set_calculations
 	} from '$lib/gear-efficiency-calculator/calculations';
 	import type { SubStatInput, GearCalculations } from '$lib/gear-efficiency-calculator/__types';
-
-	let stats = initial_stats;
-	let sets = Array(initial_stats);
+	let stats = generate_initial_stats()
+	let sets = Array([]);
 	$: calcs = gear_calculations(stats);
 	$: set_calcs = set_calculations(sets);
 
 	const add_gear = (e: CustomEvent<any>): any => {
-		sets.push([...stats]);
-		sets = sets;
-		stats = stats;
+		sets = [...sets.concat([stats])]
+		stats = generate_initial_stats()
 	};
 </script>
 
@@ -41,7 +38,7 @@
 	</Cell>
 	<Cell spanDevices={{ desktop: 12, tablet: 8, phone: 4 }}>
 		<InnerGrid>
-			<Table bind:set_calcs bind:calcs />
+			<Table bind:set_calcs />
 		</InnerGrid>
 	</Cell>
 	<Fab on:click={add_gear} style="position: fixed; right: 20; bottom: 20;">

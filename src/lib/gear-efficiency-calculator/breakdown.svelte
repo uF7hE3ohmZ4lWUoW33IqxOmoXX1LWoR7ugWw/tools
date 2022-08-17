@@ -1,44 +1,26 @@
 <script lang="ts">
-	import { Cell } from '@smui/layout-grid';
-	import Card, { Content } from '@smui/card';
-	import List, { Item, Text } from '@smui/list';
+	import IconButton from '@smui/icon-button';
+	import { Icon } from '@smui/common';
+	import List, { Item, Separator, Text } from '@smui/list';
+	import Tooltip, { Wrapper, Title, Content } from '@smui/tooltip';
 
 	import type { GearCalculations } from './__types';
 
-	export let calcs: GearCalculations[];
+	export let calc: GearCalculations = {};
 </script>
 
-{#each calcs as calc (calc.name)}
-	{#if calc.value > 0}
-		<Cell spanDevices={{ desktop: 3, tablet: 2, phone: 4 }}>
-			<Card>
-				<Content component={List}>
-					<Item class="mdc-typography--headline4">
-						<Text
-							>{calc.name
-								.replace('_', ' ')
-								.replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g, (s) => {
-									return s.toUpperCase();
-								})}</Text
-						>
-					</Item>
-					<Item>
-						<Text>Current Value: {calc.value}</Text>
-					</Item>
-					<Item>
-						<Text>Total Rolls: {calc.rolls}</Text>
-					</Item>
-					<Item>
-						<Text>Minimum Value: {calc.total_min}</Text>
-					</Item>
-					<Item>
-						<Text>Maximum Value: {calc.total_max}</Text>
-					</Item>
-					<Item>
-						<Text>Total efficiency: {calc.efficiency}%</Text>
-					</Item>
-				</Content>
-			</Card>
-		</Cell>
-	{/if}
-{/each}
+<Wrapper rich>
+	<IconButton><Icon class="material-icons">info</Icon></IconButton>
+	<Tooltip persistent xPos="end" yPos="above">
+		<Title>Breakdown</Title>
+		{#if calc}
+		<Content>
+		<List>
+			<Item><Text>Minimum: {calc.total_min}</Text></Item>
+			<Item><Text>Maximum: {calc.total_max}</Text></Item>
+			<Item><Text>Efficiency: {calc.efficiency}</Text></Item>
+		</List>
+		</Content>
+		{/if}
+	</Tooltip>
+</Wrapper>

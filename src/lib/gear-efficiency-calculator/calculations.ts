@@ -1,12 +1,14 @@
 import type { SubStatInput, GearCalculations } from './__types';
 import { gear_rolls } from './data';
 
+export const calculate_gear_total_efficiency = (inputs: GearCalculations[]) => {
+  return inputs.filter((calc) => calc.value > 0).map((c) => c.efficiency).reduce((a, b) => a + b, 0) / inputs.filter((calc) => calc.value > 0).length || 0
+}
+
 export const calculate_set_total_efficiency = (inputs: GearCalculations[][]) => {
-  return Math.round(
-    inputs
-      .map((calc) => calc.map((c) => c.efficiency).reduce((a, b) => a + b) / calc.length)
-      .reduce((a, b) => a + b) / inputs.length
-  );
+  return inputs
+      .map((calc) => calculate_gear_total_efficiency(calc))
+      .reduce((a, b) => a + b, 0) / (inputs.length - 1 === 0 ? 1 : inputs.length - 1)
 };
 
 export const gear_calculations = (sub_stats: SubStatInput[]) => {
@@ -23,7 +25,9 @@ export const gear_calculations = (sub_stats: SubStatInput[]) => {
     // Calculate as though min=0, KISS
     const normalized_stat = stat.value - total_min;
     const normalized_max = total_max - total_min;
-    const efficiency = Math.round((normalized_stat / normalized_max) * 100);
+
+    const eff = (normalized_stat / normalized_max) * 100
+    const efficiency = Math.round(eff * 100) / 100;
     response.push({
       name: stat.name,
       total_max,
@@ -41,6 +45,5 @@ export const set_calculations = (gear_stats: SubStatInput[][]) => {
   gear_stats.forEach((sub_stats) => {
     response = [...response, gear_calculations(sub_stats)]
   });
-  console.log(response);
   return response;
 };
