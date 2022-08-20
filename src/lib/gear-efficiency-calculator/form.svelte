@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { Cell } from '@smui/layout-grid';
-	import Card, { Content } from '@smui/card';
+	import Card from '@smui/card';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import { stat_names } from './data';
 	import type { SubStatInput } from './__types';
-	import { gear_calculations } from '$lib/gear-efficiency-calculator/calculations'
-	import Breakdown from './breakdown.svelte'
 
 	export let stats: SubStatInput[];
 </script>

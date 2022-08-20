@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card, { Content } from '@smui/card';
-	import List, { Item, Text } from '@smui/list';
+	import List, { Item } from '@smui/list';
 	import { charms_experience, gear_experience } from './data';
 	import type { ICalculations } from './data';
 

@@ -6,20 +6,20 @@
 	import Fab, { Icon } from '@smui/fab';
 	import { Svg } from '@smui/common/elements';
 	import { mdiPlus } from '@mdi/js';
-	import { generate_initial_stats, test_sets } from '$lib/gear-efficiency-calculator/data';
+	import { generate_initial_stats } from '$lib/gear-efficiency-calculator/data';
 	import {
 		gear_calculations,
 		set_calculations
 	} from '$lib/gear-efficiency-calculator/calculations';
-	import type { SubStatInput, GearCalculations } from '$lib/gear-efficiency-calculator/__types';
-	let stats = generate_initial_stats()
+
+	let stats = generate_initial_stats();
 	let sets = Array([]);
 	$: calcs = gear_calculations(stats);
 	$: set_calcs = set_calculations(sets);
 
-	const add_gear = (e: CustomEvent<any>): any => {
-		sets = [...sets.concat([stats])]
-		stats = generate_initial_stats()
+	const add_gear = (): void => {
+		sets = [...sets.concat([stats])];
+		stats = generate_initial_stats();
 	};
 </script>
 

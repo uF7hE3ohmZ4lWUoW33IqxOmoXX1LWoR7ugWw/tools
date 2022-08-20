@@ -4,7 +4,7 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="ImBrett Homepage" />
+	<meta name="description" content="ACE Tools homepage />
 </svelte:head>
 
 <div><Hero /></div>
