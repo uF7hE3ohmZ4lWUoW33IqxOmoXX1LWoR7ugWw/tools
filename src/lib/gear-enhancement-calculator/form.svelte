@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Select, { Option } from '@smui/select';
-	import Card, { Content } from '@smui/card';
+	import Card from '@smui/card';
 	import { exp_level_requirements } from './data';
 
 	import type { ExpLevelRequirement } from './data';
