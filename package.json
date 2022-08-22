@@ -1,6 +1,6 @@
 {
 	"name": "project",
-	"version": "0.0.2a",
+	"version": "0.0.3a",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
