@@ -19,6 +19,11 @@ export default [
 				href: '/tools/gear-efficiency-calculator',
 				label: 'Gear Efficiency Calculator',
 				icon: 'home'
+			},
+			{
+				href: '/tools/guild-boss-calculator',
+				label: 'Guild Boss Calculator',
+				icon: 'home'
 			}
 		]
 	}
