@@ -14,13 +14,13 @@
 	<Tooltip persistent xPos="end" yPos="above">
 		<Title>Breakdown</Title>
 		{#if calc}
-		<Content>
-		<List>
-			<Item><Text>Minimum: {calc.total_min}</Text></Item>
-			<Item><Text>Maximum: {calc.total_max}</Text></Item>
-			<Item><Text>Efficiency: {calc.efficiency}</Text></Item>
-		</List>
-		</Content>
+			<Content>
+				<List>
+					<Item><Text>Minimum: {calc.total_min}</Text></Item>
+					<Item><Text>Maximum: {calc.total_max}</Text></Item>
+					<Item><Text>Efficiency: {calc.efficiency}</Text></Item>
+				</List>
+			</Content>
 		{/if}
 	</Tooltip>
 </Wrapper>

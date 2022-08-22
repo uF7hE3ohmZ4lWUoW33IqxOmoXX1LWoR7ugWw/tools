@@ -1,35 +1,27 @@
-import type { Hero } from './__types'
+import type { Team } from './__types';
 
 const calculate_points_for_speed = (speed: number) => {
-  return Math.floor((speed - 100) / 4)
-}
+	return Math.floor((speed - 100) / 4);
+};
 
-export const calculate_points_for_heroes = (speeds: number[]) => {
-  return speeds.map(speed => calculate_points_for_speed(speed))
-}
+export const calculate_turn_points_for_team = (team: Team[]) => {
+	const response: HeroCalculation[] = [];
+	let current_points = 0;
+	const team_turns = team.turn_meter
+		? [{ name: '', speed: team.turn_meter + 100 }].concat(
+				...Array.from({ length: 15 }, () => team.heroes.sort((a, b) => a.speed > b.speed))
+		  )
+		: [].concat(...Array.from({ length: 15 }, () => team.heroes));
 
-/**
- * THIS IS SO BAD!!!!!
- * Red can give like 5 scuff marks for this one, but I just CBA right now
- */
-export const calculate_turn_points = (speeds: number[]) => {
-  let response: number[] = [];
-  let current_points = 0
+	for (const hero of team_turns) {
+		const calc_speed = team.has_speed_debuff ? hero.speed + 30 : hero.speed;
+		const speed = calculate_points_for_speed(calc_speed);
+		current_points += speed;
+		response.push({ name: hero.name, speed: hero.speed, points: current_points });
+		if (current_points >= 100) {
+			current_points = 0;
+		}
+	}
 
-  for(let speed of speeds) {
-    speed = calculate_points_for_speed(speed)
-    current_points += speed
-    response.push(current_points)
-    if (speed + current_points > 100) {response.push(speed + current_points); break;}
-  }
-
-  if(current_points < 100) {
-    for(let speed of speeds) {
-      speed = calculate_points_for_speed(speed)
-      current_points += speed
-      response.push(current_points)
-      if (speed + current_points > 100) {response.push(speed + current_points); break;}
-    }
-  }
-  return response
-}
+	return response.sort((a, b) => a > b);
+};

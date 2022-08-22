@@ -1,17 +1,34 @@
 <script lang="ts">
-	import Tab, { Label } from '@smui/tab';
-  import TabBar from '@smui/tab-bar';
-	import LayoutGrid, { Cell, InnerGrid } from '@smui/layout-grid';
+	import { beforeUpdate } from 'svelte';
+
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import Credits from '$lib/guild-boss-calculator/credits.svelte';
 	import Table from '$lib/guild-boss-calculator/table.svelte';
+	import Form from '$lib/guild-boss-calculator/form.svelte';
+	import Tab, { Label } from '@smui/tab';
+	import TabBar from '@smui/tab-bar';
 
-	import { calculate_points_for_heroes, calculate_turn_points } from '$lib/guild-boss-calculator/calculations'
-	import { test_speeds } from '$lib/guild-boss-calculator/data'
+	import { calculate_turn_points_for_team } from '$lib/guild-boss-calculator/calculations';
+	import { generate_team } from '$lib/guild-boss-calculator/data';
 
+	let is_phone = false;
+	let is_tablet = false;
+	let is_desktop = true;
 	let active = 'Team 1';
 
-	$: calcs = calculate_points_for_heroes(test_speeds);
-	$: team_turn_calcs = calculate_turn_points(test_speeds);
+	beforeUpdate(() => {
+		is_phone = window.matchMedia('(max-width: 600px)').matches;
+		is_tablet = window.matchMedia('(max-width: 840px)').matches;
+		is_desktop = !is_phone && !is_tablet;
+	});
+
+	$: is_phone;
+	$: is_tablet;
+	$: is_desktop;
+	$: team_1 = generate_team();
+	$: team_2 = generate_team();
+	$: team_1_turn_calcs = calculate_turn_points_for_team(team_1);
+	$: team_2_turn_calcs = calculate_turn_points_for_team(team_2);
 </script>
 
 <svelte:head>
@@ -19,20 +36,58 @@
 	<meta name="description" content="Awaken: Chaos Era guild boss calculator" />
 </svelte:head>
 
+<svelte:window />
+
 <Credits />
 
 <LayoutGrid>
-	<Cell spanDevices={{ desktop: 12, tablet: 8, phone: 4 }}>
-		<TabBar tabs={['Team 1', 'Team 2']} let:tab bind:active>
-			<Tab {tab}>
-				<Label>{tab}</Label>
-			</Tab>
-		</TabBar>
+	{#if is_phone}
+		<Cell spanDevices={{ desktop: 6, tablet: 4, phone: 4 }}>
+			<TabBar tabs={['Team 1', 'Team 2']} let:tab bind:active>
+				<Tab {tab}>
+					<Label>{tab}</Label>
+				</Tab>
+			</TabBar>
+		</Cell>
 
 		{#if active === 'Team 1'}
-			<Table {team_turn_calcs} />
-		{:else if active === 'Team 2'}
-			other tab
+			<Cell spanDevices={{ desktop: 6, tablet: 4, phone: 4 }}>
+				<Form bind:team={team_1} />
+			</Cell>
+			<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+				<Table bind:team_turn_calcs={team_1_turn_calcs} />
+			</Cell>
+		{:else}
+			<Cell spanDevices={{ desktop: 6, tablet: 4, phone: 4 }}>
+				<Form bind:team={team_2} />
+			</Cell>
+			<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+				<Table bind:team_turn_calcs={team_2_turn_calcs} />
+			</Cell>
 		{/if}
-	</Cell>
+	{:else if is_tablet}
+		<Cell spanDevices={{ desktop: 6, tablet: 4, phone: 4 }}>
+			<Form bind:team={team_1} />
+		</Cell>
+		<Cell spanDevices={{ desktop: 6, tablet: 4, phone: 4 }}>
+			<Form bind:team={team_2} />
+		</Cell>
+		<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+			<Table bind:team_turn_calcs={team_1_turn_calcs} />
+		</Cell>
+		<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+			<Table bind:team_turn_calcs={team_2_turn_calcs} />
+		</Cell>
+	{:else if is_desktop}
+		<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+			<Table bind:team_turn_calcs={team_1_turn_calcs} />
+		</Cell>
+		<Cell spanDevices={{ desktop: 6, tablet: 8, phone: 4 }}>
+			<Form bind:team={team_1} />
+			<Form bind:team={team_2} />
+		</Cell>
+		<Cell spanDevices={{ desktop: 3, tablet: 4, phone: 4 }}>
+			<Table bind:team_turn_calcs={team_2_turn_calcs} />
+		</Cell>
+	{/if}
 </LayoutGrid>

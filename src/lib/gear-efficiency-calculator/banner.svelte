@@ -1,7 +1,11 @@
 <script lang="ts">
 	import Banner, { Label, Icon } from '@smui/banner';
 	import { test_sets } from './data';
-	import { set_calculations, calculate_set_total_efficiency, calculate_gear_total_efficiency } from './calculations';
+	import {
+		set_calculations,
+		calculate_set_total_efficiency,
+		calculate_gear_total_efficiency
+	} from './calculations';
 	import type { GearCalculations } from './__types';
 
 	export let set_calcs: GearCalculations[][];

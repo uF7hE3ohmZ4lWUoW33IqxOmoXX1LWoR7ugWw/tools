@@ -12,14 +12,14 @@
 		set_calculations
 	} from '$lib/gear-efficiency-calculator/calculations';
 	import type { SubStatInput, GearCalculations } from '$lib/gear-efficiency-calculator/__types';
-	let stats = generate_initial_stats()
+	let stats = generate_initial_stats();
 	let sets = Array([]);
 	$: calcs = gear_calculations(stats);
 	$: set_calcs = set_calculations(sets);
 
 	const add_gear = (e: CustomEvent<any>): any => {
-		sets = [...sets.concat([stats])]
-		stats = generate_initial_stats()
+		sets = [...sets.concat([stats])];
+		stats = generate_initial_stats();
 	};
 </script>
 
