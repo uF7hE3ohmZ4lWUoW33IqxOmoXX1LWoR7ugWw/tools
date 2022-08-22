@@ -9,9 +9,9 @@ export const calculate_turn_points_for_team = (team: Team[]) => {
 	let current_points = 0;
 	const team_turns = team.turn_meter
 		? [{ name: '', speed: team.turn_meter + 100 }].concat(
-				...Array.from({ length: 15 }, () => team.heroes.sort((a, b) => a.speed > b.speed))
+				...Array.from({ length: 15 }, () => team.heroes.map(h => h).sort((a, b) => a.speed < b.speed))
 		  )
-		: [].concat(...Array.from({ length: 15 }, () => team.heroes.sort((a, b) => a.speed > b.speed)));
+		: [].concat(...Array.from({ length: 15 }, () => team.heroes.map(h=>h).sort((a, b) => a.speed < b.speed)));
 
 	for (const hero of team_turns) {
 		const calc_speed = team.has_speed_debuff ? hero.speed + 30 : hero.speed;
